@@ -1,0 +1,19 @@
+name: Commit Format Check
+
+on:
+  push:
+    branches:
+      - main # Adjust the branch as needed
+
+jobs:
+  commit-format-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Commit Message Format
+        run: |
+          commit_message=$(git log -1 --pretty=format:%s)
+          if ! [[ "$commit_message" =~ ^(🟢|🟠|🔵|🟡|🟣|🔴) [A-Za-z].+ ]]; then
+            echo "Invalid commit message format. Please follow the format: 'Emoji: Message'"
+            exit 1
+          fi
