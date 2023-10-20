@@ -3,7 +3,7 @@ name: Commit Format Check
 on:
   push:
     branches:
-      - main # Adjust the branch as needed
+      - main  
 
 jobs:
   commit-format-check:
